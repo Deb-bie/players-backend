@@ -51,7 +51,24 @@ const login = async (req, res, next) => {
     }
 }
 
+
+// LOG OUT
+
+const logout = async (req, res, next) => {
+    try {
+        res.cookie(
+            "access_token", "", { expiresIn: "1" }
+        ).status(200).json("You have been successfully logged out")
+        // res.redirect("/")
+
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 module.exports = {
     register,
-    login
+    login,
+    logout
 }
