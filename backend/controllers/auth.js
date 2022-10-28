@@ -13,7 +13,7 @@ const register = async (req, res, next) => {
         const newUser = new User({
             username: req.body.username,
             email: req.body.email,
-            password: hash
+            password: harsh
         })
         await newUser.save()
         res.status(200).json("User created successfully")

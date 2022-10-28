@@ -14,11 +14,7 @@ const createPlayer = async (req,res,next) => {
 // UPDATE A PLAYER
 const updatePlayer = async (req, res, next) => {
     try {
-        const updatedPlayer = await Player.findByIdAndUpdate(
-            req.params.id,
-            {new: true},
-            {$set: req.body}
-        )
+        const updatedPlayer = await Player.findByIdAndUpdate(req.params.id, {$set: req.body}, {new: true})
         res.status(200).json(updatedPlayer)
     } catch (error) {
         next(error)
@@ -38,7 +34,7 @@ const deletePlayer = async (req, res, next) => {
 // GET A PLAYER
 const getOnePlayer = async (req, res, next) => {
     try {
-        const onePlayer = Player.findById(req.params.id)
+        const onePlayer = await Player.findById(req.params.id)
         res.status(200).json(onePlayer)
     } catch (error) {
         next(error)
@@ -48,7 +44,7 @@ const getOnePlayer = async (req, res, next) => {
 // GET ALL PLAYERS
 const getAllPlayers = async (req, res, next) => {
     try {
-        const allPlayers = Player.find()
+        const allPlayers = await Player.find();
         res.status(200).json(allPlayers)
     } catch (error) {
         next(200)

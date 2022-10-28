@@ -38,8 +38,7 @@ const PlayerSchema = new mongoose.Schema(
             default: false,
         },
         image : {
-            type: String,
-            required: true
+            type: String
         }
     }
 );

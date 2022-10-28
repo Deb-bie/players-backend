@@ -2,22 +2,23 @@ const express = require("express")
 const router = express.Router();
 
 const {createPlayer, updatePlayer, deletePlayer, getOnePlayer, getAllPlayers} = require("../controllers/player.js")
+const { verifyUser } = require("../utils/verifyToken");
 
 
 // CREATE
 router.post("/", createPlayer)
 
 // UPDATE
-router.put("/:id", updatePlayer)
+router.patch("/:id", verifyUser, updatePlayer)
 
 // DELETE
-router.delete("/:id", deletePlayer)
+router.delete("/:id",verifyUser, deletePlayer)
 
 // GET ONE
-router.get("/:id", getOnePlayer)
+router.get("/:id", verifyUser, getOnePlayer)
 
 // GET ALL
-router.get("/", getAllPlayers)
+router.get("/", verifyUser, getAllPlayers)
 
 
 module.exports = router;
