@@ -18,7 +18,7 @@ router.delete("/:id",verifyUser, deletePlayer)
 router.get("/:id", verifyUser, getOnePlayer)
 
 // GET ALL
-router.get("/", verifyUser, getAllPlayers)
+router.get("/", getAllPlayers)
 
 
 module.exports = router;
